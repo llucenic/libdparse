@@ -359,14 +359,14 @@ public pure nothrow @safe @nogc:
  *     tokenSeparatingFunction = $(LINK2 #.tokenSeparatingFunction, tokenSeparatingFunction)
  *     staticTokens = $(LINK2 #.staticTokens, staticTokens)
  *     dynamicTokens = $(LINK2 #.dynamicTokens, dynamicTokens)
- *     possibleDefaultTokens = $(LINK2 #.possibleDefaultTokens, possibleDefaultTokens)
  *     tokenHandlers = $(LINK2 #.tokenHandlers, tokenHandlers)
+ *     possibleDefaultTokens = $(LINK2 #.possibleDefaultTokens, possibleDefaultTokens)
  * Examples:
  * ---
  * struct CalculatorLexer
  * {
- *     mixin Lexer!(IdType, Token, defaultTokenFunction, isSeparating,
- *         staticTokens, dynamicTokens, possibleDefaultTokens, tokenHandlers);
+ *     mixin Lexer!(Token, defaultTokenFunction, tokenSeparatingFunction,
+ *         staticTokens, dynamicTokens, tokenHandlers, possibleDefaultTokens);
  *
  *     this (ubyte[] bytes)
  *     {
@@ -397,7 +397,7 @@ public pure nothrow @safe @nogc:
  *         return Token(tok!"");
  *     }
  *
- *     bool isSeparating(size_t offset) pure nothrow @safe
+ *     bool tokenSeparatingFunction(size_t offset) pure nothrow @safe
  *     {
  *         // For this example language, always return true.
  *         return true;
